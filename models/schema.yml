@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: raw
+    database: my-project-509220
     schema: gz_raw_data
     tables:
       - name: sales
