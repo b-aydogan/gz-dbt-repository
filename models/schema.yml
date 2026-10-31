@@ -56,3 +56,40 @@ sources:
         identifier: raw_gz_criteo
       - name: facebook
         identifier: raw_gz_facebook
+      - name: int_campaigns
+        description: "Tüm pazarlama kanallarindan gelen kampanya verilerinin birleştirildiği intermediate model"
+        columns:
+          - name: campaign_key
+            description: "Kampanyanin birincil anahtari"
+            tests:
+             - unique
+             - not_null
+          - name: ads_cost
+            description: "Reklam maliyeti"
+            tests:
+             - not_null
+      - name: int_campaigns_day
+        description: "Kampanya verileirnin günlük bazda toplulastirildigi indermediate model"
+        columns:
+          - name: date_date
+            description: "Kampanya tarihi (Birincil anahtar)"
+            tests:
+              - unique
+              - not_null
+          - name: ads_cost
+            description: "Günlük toplam reklam maliyeti"
+          - name: ads_impression
+            description: "Günlük toplam gösterim sayisi"
+          - name: ads_click
+            description: "Günlük toplam tiklama sayisi"
+      - name: finance_campaigns_day
+        description: "global kpi"
+        columns:
+          - name: ads_margin
+            description: "operational_margin - ads_cost"
+            tests:
+              - not_null
+          - name: average_basket
+            description: "her gün için ortalama sepet tutari"
+            tests:
+              - not_null    
