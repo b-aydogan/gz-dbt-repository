@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('raw', 'criteo') }}
+    select * from `my-project-509220.gz_raw_data. raw_gz_criteo`
 
 ),
 
@@ -17,9 +17,9 @@ renamed as (
         impression,
         click
 
-
     from source
 
 )
 
 select * from renamed
+
